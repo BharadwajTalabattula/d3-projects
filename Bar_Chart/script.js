@@ -30,7 +30,7 @@ let drawCanvas = () =>{
 let generateScales = () =>{
     yScale = d3.scaleLinear()
                .domain([0, d3.max(values, d => d[1])])
-               .range([0, height - ( 2 * padding)])
+               .range([0, (height - 2 *padding)])
     
     xScale = d3.scaleLinear()
                .domain([0, values.length - 1])
@@ -79,7 +79,12 @@ let drawBars = () =>{
                 .attr('data-date', item[0])
                 .style('left', (event.pageX + 10) + 'px' )
                 .style('top', height - (4 *  padding) + 'px')
+              
     
+    )
+    .on('mouseout', () => {
+        tootltip.style('visibility', 'hidden')
+    }
     )
 }
 
@@ -98,7 +103,7 @@ let generateAxis = () =>{
 
     svg.append('g')
        .call(yAxisScale)
-       .attr("id", "y-axis")
+       . attr("id", "y-axis")
        .attr("transform", "translate( "+(padding + 10)+", 0)")
 
 
